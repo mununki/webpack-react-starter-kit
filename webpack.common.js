@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: { app: "./src/index" },
@@ -21,8 +22,37 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // only enable hot in development
+              hmr: process.env.NODE_ENV === "development",
+              // if hmr does not work, this is a forceful method.
+              reloadAll: true
+            }
+          },
+          "css-loader",
+          "sass-loader"
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // only enable hot in development
+              hmr: process.env.NODE_ENV === "development",
+              // if hmr does not work, this is a forceful method.
+              reloadAll: true
+            }
+          },
+          "css-loader",
+          "less-loader"
+        ],
         exclude: /node_modules/
       },
       {
@@ -40,6 +70,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Webpack with React",
       template: path.resolve(__dirname, "src/index.html")
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css"
     })
   ]
 };
