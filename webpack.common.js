@@ -1,13 +1,20 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: { app: "./src/index" },
+  entry: {
+    app: [
+      "./src/index",
+      "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true"
+    ]
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js"
+    filename: "[name].bundle.js",
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -73,6 +80,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
