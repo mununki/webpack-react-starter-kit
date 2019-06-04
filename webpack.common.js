@@ -76,5 +76,10 @@ module.exports = {
       filename: "[name].css"
     }),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
+  }
 };
