@@ -5,12 +5,6 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: {
-    app: [
-      "./src/index",
-      "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true"
-    ]
-  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
