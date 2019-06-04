@@ -11,6 +11,7 @@
   - images files
 - Webpack-dev-server
 - Node.js Express dev server with HMR
+- Code splitting
 
 ## Usage
 
