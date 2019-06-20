@@ -75,7 +75,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // Replacing PRODUCTION to true in compile time
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(true)
+    })
   ],
   optimization: {
     splitChunks: {
