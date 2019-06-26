@@ -35,7 +35,8 @@
   "dependencies": {
     "core-js": "3",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "regenerator-runtime": "^0.13.2"
   },
   "scripts": {
     "build": "webpack --config webpack.prod.js",
