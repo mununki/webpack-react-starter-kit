@@ -15,6 +15,7 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "Webpack with React",
+      favicon: "./src/img/favicon.png",
       template: path.resolve(__dirname, "src/index.html")
     }),
     new MiniCssExtractPlugin({
